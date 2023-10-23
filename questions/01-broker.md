@@ -372,7 +372,7 @@ This is active-passing as the replicated topic is used for read-only purposes on
 ## Question 20 (3-45)
 In Kafka, every broker... (select three)
 
-- 2 knows all the metadate for all topics and partitions
+- 2 knows all the metadata for all topics and partitions
 - 3 Contains only a subset of topics and partitions
 - 5 is a bootstrap broker
 

@@ -9,7 +9,8 @@ Which of the following setting increases the chance of batching for a Kafka Prod
 
 
 ## Question 2 (1): 
-Producing with a key allows to...A Kafka producer application wants to send log messages to a topic that does not include any key. What are the properties that are mandatory to configure for the producer configuration? (select three)
+Producing with a key allows to...
+
 1. Add more information to my message
 2. Influence partitioning of the producer messages
 3. Allow a Kafka Consumer to subscribe to a (topic,key) pair and only receive that data
@@ -260,6 +261,9 @@ To enhance compression, I can increase the chances of batching by using
 - (2) max.message.size=10MB
 - (3) linger.ms=20
 - (4) acks=all
+
+## Question 29 (1):
+What Are the parts of a producer message?
 
 # Answers
 ## Answer 1
@@ -573,31 +577,13 @@ To enhance compression, I can increase the chances of batching by using
 Explanation
 linger.ms forces the producer to wait before sending messages, hence increasing the chance of creating batches that can be heavily compressed.
 
-# Template
-## Question 1
-## Question 2:
-## Question 3:
-## Question 4:
-## Question 5:
-## Question 6:
-## Question 7:
-## Question 8:
-## Question 9:
-## Question 10:
-## Question 11:
-## Question 12:
-## Question 13:
-## Question 14:
-## Question 15:
-## Question 17:
-## Question 18:
-## Question 19 :
-## Question 20:
-## Question 21:
-## Question 22:
-## Question 23:
-## Question 24:
-## Question 25:
+## Answer 29
 
+1. Key (Binary)
+2. Message (Binary)
+3. Compression Type
+4. Headers (optional)
+5. partition + offset
+6. timestamp (system or user set)
 # Review
 - 6,10,24
