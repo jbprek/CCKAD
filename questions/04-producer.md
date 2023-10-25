@@ -386,10 +386,7 @@ Increasing the number of partition causes new messages keys to get hashed differ
 ## Answer 12:
 To prevent network-induced duplicates when producing to Kafka, I should use
 
-- (1) batch.size=1
-- (2) retries=200000
 - (3) enable.idempotence=true
-- (4) max.in.flight.requests.per.connection=1
 
 Explanation
 
@@ -532,7 +529,7 @@ All brokers can respond to a Metadata request, so a client can connect to any br
 ## Answer 24:
 A kafka topic has a replication factor of 3 and min.insync.replicas setting of 2. How many brokers can go down before a producer with acks=1 can't produce?
 
-- (3.) 3
+- (4) 2
 
 Explanation
 
@@ -585,5 +582,44 @@ linger.ms forces the producer to wait before sending messages, hence increasing 
 4. Headers (optional)
 5. partition + offset
 6. timestamp (system or user set)
-# Review
-- 6,10,24
+
+# Answers summary
+
+
+## Answer 1 - 3
+## Answer 2 - 2
+## Answer 3 - 2
+## Answer 4 - 2,3
+## Answer 5 - 3,5
+## Answer 6 - 1,3,5
+## Answer 7 - 2
+## Answer 8 - 1
+## Answer 9 - 1,2,6
+## Answer 10 - 1
+## Answer 11 - 3,4
+## Answer 12 - 3
+## Answer 13 - 1
+## Answer 14 - 1
+## Answer 15 - 3
+## Answer 16 - 2
+## Answer 17 - 1
+## Answer 18 - 1
+## Answer 19  -1
+## Answer 20 - 4
+## Answer 21 - 1,3
+## Answer 22 - 1,3
+## Answer 23 - 1
+## Answer 24 - 4
+## Answer 25 - 1
+## Answer 26 - 1 
+## Answer 27 - 1
+## Answer 28 - 3
+
+## Answer 29
+
+1. Key (Binary)
+2. Message (Binary)
+3. Compression Type
+4. Headers (optional)
+5. partition + offset
+6. timestamp (system or user set)

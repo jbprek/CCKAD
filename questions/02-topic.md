@@ -121,7 +121,7 @@ We can only add partitions to an existing topic, and it must be done using the k
 
 
 # Answers Topic
-## Question 1 (1-13)
+## Answer 1 (1-13)
 A Zookeeper ensemble contains 3 servers. Over which ports the members of the ensemble should be able to communicate in default configuration? (select three)
 
 - (1.) 3888
@@ -132,7 +132,7 @@ Explanation
 
 2181 - client port, 2888 - peer port, 3888 - leader port
 
-## Question 2 (1-37)
+## Answer 2 (1-37)
 A kafka topic has a replication factor of 3 and min.insync.replicas setting of 1. What is the maximum number of brokers that can be down so that a producer with acks=all can still produce to the topic?
 
 - (3.) 2
@@ -141,7 +141,7 @@ Explanation
 
 Two brokers can go down, and one replica will still be able to receive and serve data
 
-## Question 3 (1- 45)
+## Answer 3 (1- 45)
 If a topic has a replication factor of 3...
 
 - (3.) Each partition will live on 3 different brokers
@@ -151,7 +151,7 @@ Explanation
 Replicas are spread across available brokers, and each replica = one broker. RF 3 = 3 brokers
 
 
-## Question 4 (2-13)
+## Answer 4 (2-13)
 Your topic is log compacted and you are sending a message with the key K and value null. What will happen?
 
 - (4.) The broker will delete all messages with the key K upon cleanup.
@@ -161,7 +161,7 @@ Explanation
 Sending a message with the null value is called a tombstone in Kafka and will ensure the log compacted topic does not contain any messages with the key K upon compaction
 
 
-## Question 5 (2- 28)
+## Answer 5 (2- 28)
 Compaction is enabled for a topic in Kafka by setting log.cleanup.policy=compact. What is true about log compaction?
 
 - (4.) After cleanup, only one message per key is retained with the latest value
@@ -171,7 +171,7 @@ Explanation
 Log compaction retains at least the last known value for each record key for a single topic partition. All compacted log offsets remain valid, even if record at offset has been compacted away as a consumer will get the next highest offset.
 
 
-## Question 6 (2- 40)
+## Answer 6 (2- 40)
 When auto.create.topics.enable is set to true in Kafka configuration, what are the circumstances under which a Kafka broker automatically creates a topic? (select three)
 
 1. Client requests metadata from a topic
@@ -184,7 +184,7 @@ A kafka broker automatically creates a topic under the following circumstances: 
 
 
 
-## Question 7 (2-  46)
+## Answer 7 (2-  46)
 What is true about partitions? (select two)
 
 - (1.) A partition has one replica that is the leader, while the other replicas are followers
@@ -194,7 +194,7 @@ What is true about partitions? (select two)
 
 Only one of the replicas is elected as partition leader. And a broker can definitely hold many partitions from the same topic on its disk, try creating a topic with 12 partitions on one broker!
 
-## Question 8 (3-  10)
+## Answer 8 (3-  10)
 How will you set the retention for the topic named Lalakis to 1 hour?
 
 - (3.) Set the topic config retention.ms to 3600000
@@ -203,7 +203,7 @@ Explanation
 
 retention.ms can be configured at topic level while creating topic or by altering topic. It shouldn't be set at the broker level (log.retention.ms) as this would impact all the topics in the cluster, not just the one we are interested in
 
-## Question 9 (3-  21)
+## Answer 9 (3-  21)
 There are 3 brokers in the cluster. You want to create a topic with a single partition that is resilient to one broker failure and one broker maintenance. What is the replication factor will you specify while creating the topic?
 
 - (3.) 3
@@ -213,7 +213,7 @@ Explanation
 
 1 is not possible as it doesn't provide resilience to failure, 2 is not enough as if we take a broker down for maintenance, we cannot tolerate a broker failure, and 6 is impossible as we only have 3 brokers (RF cannot be greater than the number of brokers). Here the correct answer is 3
 
-## Question 10 (3- 28)
+## Answer 10 (3- 28)
 What is true about replicas ?
 - (2.) Leader replica handles all produce and consume requests
 
@@ -221,7 +221,7 @@ Explanation
 
 Replicas are passive - they don't handle produce or consume request. Produce and consume requests get sent to the node hosting partition leader.
 
-## Question 11 (3- 35)
+## Answer 11 (3- 35)
 What's a Kafka partition made of?
 
 - (3.) One file and two indexes per segment
@@ -231,7 +231,7 @@ Explanation
 
 Kafka partitions are made of segments (usually each segment is 1GB), and each segment has two corresponding indexes (offset index and time index)
 
-## Question 12 (3-48)
+## Answer 12 (3-48)
 By default, which replica will be elected as a partition leader? (select two)
 
 - (1.) An in sync replica
@@ -241,7 +241,7 @@ Explanation
 
 Preferred leader is a broker that was leader when topic was created. It is preferred because when partitions are first created, the leaders are balanced between brokers. Otherwise, any of the in-sync replicas (ISR) will be elected leader, as long as unclean.leader.election=false (by default)
 
-## Question 13 (3-50)
+## Answer 13 (3-50)
 Which of the following statements are true regarding the number of partitions of a topic?
 
 1. We can add partitions in a topic by adding a broker to the cluster

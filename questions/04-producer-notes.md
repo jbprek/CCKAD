@@ -12,6 +12,9 @@
 - delivery.timeout.ms : If the producer exceeds delivery.timeout.ms while retrying, the callback will be called with the exception that corresponds to the error that the broker returned before retrying. If delivery.timeout.ms is exceeded while the record batch was still waiting to be sent, the callback will be called with a timeout exception. delivery.timeout.ms > linger.ms + retry.backoff.ms + request.rimeout.ms, default value 2 min.
 - linger.ms
 
+## Retryable errors/exceptions
+
+- [REf](https://kafka.apache.org/protocol#protocol_error_codes)
 ### Related questions
 
 
