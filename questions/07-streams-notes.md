@@ -1,12 +1,21 @@
 # Streams Notes
 
 ## Concepts
+### Topology
+Definition: Topology is a graph of processors chained together by streams.
+
+Components
+- streams
+- processors
+  - Source processor (Input can have multiple)
+  - Sink processor 
 
 ### KStream
 - all **inserts**
 - similar to a log
 - infinite
 - unbounded
+Note: Stream def is a sequence of immutable data records, that's fully ordered and can be replayed.
 
 #### KStream Usage:
 - Reading from a non compacted topic

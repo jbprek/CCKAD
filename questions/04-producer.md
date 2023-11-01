@@ -33,14 +33,14 @@ Which of the following errors are retryable from a producer perspective? (select
 4. TOPIC_AUTHORIZATION_FAILED
 5. MESSAGE_TOO_LARGE
 
-## Question 5: 
+## Question 5: (-)
 Your producer is producing at a very high rate and the batches are completely full each time. How can you improve the producer throughput? (select two)
 1. Increase linger.ms
 2. Decrease batch.size
 3. Increase batch.size
 4. Disable compression
 5. Enable compression
-5. Decrease linger.ms
+6. Decrease linger.ms
 
 ## Question 6: 
 Select all that applies (select THREE)
@@ -58,7 +58,7 @@ To get acknowledgement of writes to only the leader partition, we need to use th
 2. acks=1
 3. acks=all
 
-## Question 8: 
+## Question 8: (-) Is this correct
 What is the risk of increasing max.in.flight.requests.per.connection while also enabling retries in a producer?
 
 1. At least once delivery is not guaranteed
@@ -66,7 +66,7 @@ What is the risk of increasing max.in.flight.requests.per.connection while also 
 3. Message order is not preserved
 4.  Less resilient
 
-## Question 9: 
+## Question 9: (-)
 A Kafka producer application wants to send log messages to a topic that does not include any key. What are the properties that are mandatory to configure for the producer configuration? (select three)
 
 1. value.serializer
@@ -193,7 +193,7 @@ If I supply the setting compression.type=snappy to my producer, what will happen
 4. The Consumers have to compress the data
 5. The Kafka brokers have to decompress the data
 
-## Question 22: 
+## Question 22: (-)
 What exceptions may be caught by the following producer? (select two)
 ````
 ProducerRecord<String, String> record = new ProducerRecord<>("topic1", "key1", "value1");
@@ -227,7 +227,6 @@ A kafka topic has a replication factor of 3 and min.insync.replicas setting of 2
 4. 2
 
 
-
 ## Question 25: 
 You want to send a message of size 3 MB to a topic with default message size configuration. How does KafkaProducer handle large messages?
 
@@ -254,7 +253,7 @@ A topic has three replicas and you set min.insync.replicas to 2. If two out of t
 - (2) Produce rqquest is honored with single in sync replica
 - (3) Produce request will block till one of the two unavailable partition is available again
 
-## Question 28 (1):
+## Question 28 (1): (-) ?
 To enhance compression, I can increase the chances of batching by using
 
 - (1) batch.size=65536
