@@ -2,6 +2,26 @@
 
 ## General
 
+## Reference
+- JavaDoc
+  - [KafkaConsumer ](https://kafka.apache.org/35/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html)
+## Kafka Producer timing/state
+
+![State](producer-images/producer-state.png)
+
+## Kafka Producer Acks
+The default value of acks has changed with Kafka v3.0
+- if using Kafka < v3.0, acks=1
+- if using Kafka >= v3.0, acks=all
+
+### acks=0 
+Producers consider messages as "written successfully" the moment the message was sent without waiting for the broker to accept it at al
+### acks=1
+Producers consider messages as "written successfully" when the message was acknowledged by only the leader.
+### acks=-1 (all)
+When acks=all, producers consider messages as "written successfully" when the message is accepted by all in-sync replicas (ISR).
+Related to **min.insync.replicas** topic and/or broker configuration parameter
+With a replication.factor=N and min.insync.replicas=M we can tolerate N-M brokers going down for topic availability purposes.
 ## Use of key
 
 ## Configuration
@@ -14,7 +34,7 @@
 
 ## Retryable errors/exceptions
 
-- [REf](https://kafka.apache.org/protocol#protocol_error_codes)
+- [Retryable Error Codes](https://kafka.apache.org/protocol#protocol_error_codes)
 ### Related questions
 
 
@@ -44,6 +64,18 @@
 - Q24  Quiz, given replication factor 3  and min.insync.replicas 2 how many brokers can go down before producer with acks=1 can't produce?
 - Q25 What happens when messsage exceeds message limit - MessageSizeTooLarge is thrown which is not a retryable exception
 
+## Question  1:
+What Are the parts of a producer message?
+
+
+## Answer 1
+
+1. Key (Binary)
+2. Message (Binary)
+3. Compression Type
+4. Headers (optional)
+5. partition + offset
+6. timestamp (system or user set)
 
 ### Missed Questions
  - 1 WIMM

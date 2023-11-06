@@ -58,7 +58,7 @@ To get acknowledgement of writes to only the leader partition, we need to use th
 2. acks=1
 3. acks=all
 
-## Question 8: (-) Is this correct
+## Question 8: (-) 
 What is the risk of increasing max.in.flight.requests.per.connection while also enabling retries in a producer?
 
 1. At least once delivery is not guaranteed
@@ -261,8 +261,53 @@ To enhance compression, I can increase the chances of batching by using
 - (3) linger.ms=20
 - (4) acks=all
 
-## Question 29 (1):
-What Are the parts of a producer message?
+## Question 29 (E):
+You need all messages produced with a certain key value to be written to a single topic
+partition. What would you do to accomplish this? (choose one)
+
+- (1) Create a producer group and configure each producer in the group to produce messages
+for a single key value
+- (2)  Invoke your producer in multiple threads and assign each producer to produce
+messages for a single key value
+- (3)   No action is necessary, the default partitioner will accomplish this
+- (4)  Configure your producer to send messages for all key values to one broker and
+configure that broker to redirect those messages to partitions based upon the message
+key value
+- 
+## Question 30 (E):
+Your organization is developing an application that produces messages to Kafka with a
+requirement that the messages are evenly distributed across a topic with 20 partitions. After
+completing the initial design phase and client development, load testing resulted in the
+following:
+- 5% of test messages were written to 5 partitions
+- 20% of test messages were written to 10 partitions
+- 75% of test message were written to 5 partitions
+- Key assignment for the test messages correctly represented what is expected for the
+  production environment
+-
+What action might result in more even distribution of produced messages across the available
+partitions? (choose two)
+
+- (1) Write a custom partitioner
+- (2) Increase the number of producer clients used by the application
+- (3) Redesign the message key
+- (4) Distribute the topic partitions across additional brokers
+
+## Question 31 (E):
+You need to guarantee messages are produced to Kafka at most once. What would you do to
+implement this? (choose two)
+- (1) Set acks=ALL
+- (2) Set acks=0
+- (3) Set acks=1
+
+## Question 32 (E): (-)
+Your priority for producing messages to the Kafka cluster is maximum throughput over low
+latency. What would you do to accomplish this? (choose one)
+- (1) Set batch.size low value and linger.ms to 0
+- (2) Set batch.size high value and linger.ms to 0
+- (3) Set batch.size low value and linger.ms to high value
+- (4) Set batch.size high value and linger.ms to high value
+
 
 # Answers
 ## Answer 1
@@ -341,7 +386,7 @@ Producers can set acks=1 to get acknowledgement from partition leader only.
 ## Answer 8:
 What is the risk of increasing max.in.flight.requests.per.connection while also enabling retries in a producer?
 
-- (1) At least once delivery is not guaranteed
+- (3) Message order is not preserved
 
 Explanation
 
@@ -573,52 +618,42 @@ To enhance compression, I can increase the chances of batching by using
 Explanation
 linger.ms forces the producer to wait before sending messages, hence increasing the chance of creating batches that can be heavily compressed.
 
-## Answer 29
 
-1. Key (Binary)
-2. Message (Binary)
-3. Compression Type
-4. Headers (optional)
-5. partition + offset
-6. timestamp (system or user set)
+## Answer 29 (E):
+You need all messages produced with a certain key value to be written to a single topic
+partition. What would you do to accomplish this? (choose one)
 
-# Answers summary
+- (3)   No action is necessary, the default partitioner will accomplish this
+
+## Answer 30 (E):
+Your organization is developing an application that produces messages to Kafka with a
+requirement that the messages are evenly distributed across a topic with 20 partitions. After
+completing the initial design phase and client development, load testing resulted in the
+following:
+- 5% of test messages were written to 5 partitions
+- 20% of test messages were written to 10 partitions
+- 75% of test message were written to 5 partitions
+- Key assignment for the test messages correctly represented what is expected for the
+production environment
+- 
+What action might result in more even distribution of produced messages across the available
+partitions? (choose two)
+
+- (1) Write a custom partitioner
+- (3) Redesign the message key
+
+## Answer 31 (E):
+You need to guarantee messages are produced to Kafka at most once. What would you do to
+implement this? (choose two)
+
+- (2) Set acks=0
+- (3) Set acks=1
 
 
-## Answer 1 - 3
-## Answer 2 - 2
-## Answer 3 - 2
-## Answer 4 - 2,3
-## Answer 5 - 3,5
-## Answer 6 - 1,3,5
-## Answer 7 - 2
-## Answer 8 - 1
-## Answer 9 - 1,2,6
-## Answer 10 - 1
-## Answer 11 - 3,4
-## Answer 12 - 3
-## Answer 13 - 1
-## Answer 14 - 1
-## Answer 15 - 3
-## Answer 16 - 2
-## Answer 17 - 1
-## Answer 18 - 1
-## Answer 19  -1
-## Answer 20 - 4
-## Answer 21 - 1,3
-## Answer 22 - 1,3
-## Answer 23 - 1
-## Answer 24 - 4
-## Answer 25 - 1
-## Answer 26 - 1 
-## Answer 27 - 1
-## Answer 28 - 3
+## Answer 32 (E): (-)
+Your priority for producing messages to the Kafka cluster is maximum throughput over low
+latency. What would you do to accomplish this? (choose one)
 
-## Answer 29
+- (4) Set batch.size high value and linger.ms to high value
 
-1. Key (Binary)
-2. Message (Binary)
-3. Compression Type
-4. Headers (optional)
-5. partition + offset
-6. timestamp (system or user set)
+Explanation : Increased throughput == increased batching

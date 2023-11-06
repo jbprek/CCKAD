@@ -2,7 +2,7 @@
 
 # Questions
 
-## Question 1 (1): 
+## Question 1 (1): (-)
 We would like to be in an at-most once consuming scenario. Which offset commit strategy would you recommend?
 
 1. Commit the offsets in Kafka, before processing the data
@@ -19,7 +19,7 @@ There are two consumers C1 and C2 belonging to the same group G subscribed to to
 3. C1 will be assigned partitions 0 and 2 from T1 and partition 1 from T2. C2 will have partition 1 from T1 and partitions 0 and 2 from T2
 4. All consumers will read all partitions
 
-## Question 3 (1): 
+## Question 3 (1): : (-)
 A consumer starts and has auto.offset.reset=latest, and the topic partition currently has data for offsets going from 45 to 2311. The consumer group has committed the offset 643 for the topic before. Where will the consumer read from?
 
 1. offset 45
@@ -27,7 +27,7 @@ A consumer starts and has auto.offset.reset=latest, and the topic partition curr
 3. it will crash
 4. offset 2311
 
-## Question 4: 
+## Question 4: : (-)
 A consumer wants to read messages from a specific partition of a topic. How can this be achieved?
 
 1. Call assign() passing a Collection of TopicPartitions as the argument
@@ -35,7 +35,7 @@ A consumer wants to read messages from a specific partition of a topic. How can 
 3. Call subscribe(String topic, int partition) passing the topic and partition number as arguments
 
 
-## Question 5 (1): 
+## Question 5 (1): : (-)
 Select all the way for one consumer to subscribe simultaneously to the following topics - topic.history, topic.sports, topic.politics? (select two)
 1. 
     ````
@@ -76,7 +76,7 @@ Explanation
 
 See https://stackoverflow.com/a/37748336/3019499
 
-## Question 8: 
+## Question 8: (-)
 A topic has three replicas, and you set min.insync.replicas to 2. If two out of three replicas are not available, what happens when a consume request is sent to broker?
 
 1. Data will be returned from the remaining in-sync replica
@@ -84,7 +84,7 @@ A topic has three replicas, and you set min.insync.replicas to 2. If two out of 
 3. A new leader for the partition will be elected
 4. An empty message will be returned
 
-## Question 9 (2): 
+## Question 9 (2):  (-)
 A consumer sends a request to commit offset 2000. There is a temporary communication problem, so the broker never gets the request and therefore never responds. Meanwhile, the consumer processed another batch and successfully committed offset 3000. What should you do?
 
 1. Use kafka-consumer-group command to manually commit the offsets 2000 for the consumer group
@@ -92,7 +92,7 @@ A consumer sends a request to commit offset 2000. There is a temporary communica
 3. Add a new consumer to the group
 4. Restart the consumer
 
-## Question 10 (2): 
+## Question 10 (2):  (-)
 A producer just sent a message to the leader broker for a topic partition. The producer used acks=1 and therefore the data has not yet been replicated to followers. Under which conditions will the consumer see the message?
 
 1. When the high watermark has advanced
@@ -100,7 +100,7 @@ A producer just sent a message to the leader broker for a topic partition. The p
 3. Right away
 4. When the message has been fully replicated to all replicas
 
-## Question 11 (2): 
+## Question 11 (2):  (-)
 A consumer wants to read messages from partitions 0 and 1 of a topic topic1. Code snippet is shown below.
 ````
 consumer.subscribe(Arrays.asList("topic1"));
@@ -120,11 +120,7 @@ There are 3 producers writing to a topic with 5 partitions. There are 10 consume
 3. None
 4. 5
 
-Explanation
-
-One consumer per partition assignment will keep 5 consumers idle.
-
-## Question 13 (2): 
+## Question 13 (2):  (-)
 ````
 while (true) {
    ConsumerRecords<String, String> records = consumer.poll(100);
@@ -149,7 +145,7 @@ What kind of delivery guarantee this consumer offers?
 2. At most once
 3. Exactly once
 
-## Question 14 (2): 
+## Question 14 (2):  (-)
 A consumer starts and has auto.offset.reset=none, and the topic partition currently has data for offsets going from 45 to 2311. The consumer group has committed the offset 10 for the topic before. Where will the consumer read from?
 
 1. offset 10
@@ -157,7 +153,7 @@ A consumer starts and has auto.offset.reset=none, and the topic partition curren
 3. offset 2311
 4. offset 45
 
-## Question 15 (2): 
+## Question 15 (2):  (-)
 You are doing complex calculations using a machine learning framework on records fetched from a Kafka topic. It takes more about 6 minutes to process a record batch, and the consumer enters rebalances even though it's still running. How can you improve this scenario?
 
 1. increase heartbeat.interval.ms to 600000
@@ -165,9 +161,6 @@ You are doing complex calculations using a machine learning framework on records
 3. increase session.timeout.ms to 600000
 4. increase max.pol.interval.ms to 600000
 
-Explanation
-
-Here, we need to change the setting max.poll.interval.ms (default 300000) to its double in order to tell Kafka a consumer should be considered dead if the consumer only if it hasn't called the .poll() method in 10 minutes instead of 5.
 
 ## Question 16 (2): 
 Which actions will trigger partition rebalance for a consumer group? (select three)
@@ -179,7 +172,7 @@ Which actions will trigger partition rebalance for a consumer group? (select thr
 5. Add a broker to the cluster
 
 
-## Question 17 (2): 
+## Question 17 (2):  (-)
 In the Kafka consumer metrics it is observed that fetch-rate is very high and each fetch is small. What steps will you take to increase throughput?
 
 1. increase fetch.max.bytes
@@ -220,7 +213,7 @@ Two consumers share the same group.id (consumer group id). Each consumer will
 3. Read all the data from all partitions
 
 
-## Question 22 (3):
+## Question 22 (3): (-)
 A consumer is configured with enable.auto.commit=false. What happens when close() is called on the consumer object?
 
 1. A rebalance in the consumer group will happen immediately
@@ -239,7 +232,7 @@ Explanation
 
 (Topic,Partition,Offset) uniquely identifies a message in Kafka
 
-## Question 24 (3):
+## Question 24 (3): (-)
 Consumer failed to process record # 10 and succeeded in processing record # 11. Select the course of action that you should choose to guarantee at least once processing
 
 1. Commit offsets at 11
@@ -258,7 +251,7 @@ Explanation
 
 Latest means that data retrievals will start from where the offsets currently end
 
-## Question 26 (3):
+## Question 26 (3):  (-)
 You have a consumer group of 12 consumers and when a consumer gets killed by the process management system, rather abruptly, it does not trigger a graceful shutdown of your consumer. Therefore, it takes up to 10 seconds for a rebalance to happen. The business would like to have a 3 seconds rebalance time. What should you do? (select two)
 
 
@@ -276,6 +269,16 @@ A topic has three replicas and you set min.insync.replicas to 2. If two out of t
 - (2) NotEnoughReplicasException will be returned
 - (3) A new leader for the partition will be elected
 - (4) An empty message will be returned 
+
+## Question 28 (E): (-)
+Using the Range partition assignment strategy, which of the specified partition assignments will
+occur? (Choose one)
+
+![img](05-consumer-images/question28.png)
+- (1) Topic A partition 0 and topic A partition 1 will be assigned to the same consumer
+- (2) Topic A partition 0 and topic B partition 1 will be assigned to the same consumer
+- (3) Topic A partition 0 and topic B partition 0 will be assigned to the same consumer
+- (4) Topic B partition 0 and topic B partition 1 will be assigned to the same consumer
 
 # Answers
 
@@ -578,3 +581,12 @@ A topic has three replicas and you set min.insync.replicas to 2. If two out of t
 
 Explanation
 With this configuration, a single in-sync replica is still readable, but not writeable if the producer using acks=all
+
+
+## Answer 28 (E):
+Using the Range partition assignment strategy, which of the specified partition assignments will
+occur? (Choose one)
+
+![img](05-consumer-images/question28.png)
+
+- (3) Topic A partition 0 and topic B partition 0 will be assigned to the same consumer
