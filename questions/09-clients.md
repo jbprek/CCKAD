@@ -18,7 +18,7 @@ Which of the following is true regarding thread safety in the Java Kafka Clients
 
 
 ## Question 3 (3-  16)
-What's is true about Kafka brokers and clients from version 0.10.2 onwards?
+What is true about Kafka brokers and clients from version 0.10.2 onwards?
 
 1. A newer client can't talk to a newer broker, but an older client can talk to a newer broker
 2. A newer client can talk to a newer broker, but an older client cannot talk to a newer broker

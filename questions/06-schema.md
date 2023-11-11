@@ -9,7 +9,7 @@ A consumer application is using KafkaAvroDeserializer to deserialize Avro messag
 3. Throws Serialization Exception
 4. Fails silently
 
-## Question 2 (1-6)
+## Question 2 (1-6) SOS (-)
 I am producing Avro data on my Kafka cluster that is integrated with the Confluent Schema Registry. After a schema change that is incompatible, I know my data will be rejected. Which component will reject the data?
 
 1. Zookeeper
@@ -33,8 +33,8 @@ Which is an optional field in an Avro record?
 3. fields
 4. namespace
 
-## Question 5 (1- 31)
-What isn't a feature of the Confluent schema registry?
+## Question 5 (1- 31) 
+What is NOT a feature of the Confluent schema registry?
 
 1. Enforce compatibility rules
 2. Store schemas
@@ -49,21 +49,15 @@ Using the Confluent Schema Registry, where are Avro schema stored?
 3. in the _schemas topic
 4. In the message bytes themselves
 
-Explanation
 
-The Schema Registry stores all the schemas in the _schemas Kafka topic
 
-## Question 7 (1- 34)
+## Question 7 (1- 34) SOS (-)
 In Avro, adding a field to a record without default is a __ schema evolution
 
 1. breaking
 2. forward
 3. backward
 4. full
-
-Explanation
-
-Clients with old schema will be able to read records saved with new schema.
 
 ## Question 8 (2-8)
 When using the Confluent Kafka Distribution, where does the schema registry service reside?
@@ -73,7 +67,7 @@ When using the Confluent Kafka Distribution, where does the schema registry serv
 3. As a separate JVM Component
 4. As an in memory plugin on your Kafka Brokers
 
-## Question 9 (2-31)
+## Question 9 (2-31)  SOS (-)
 In Avro, removing a field that does not have a default is a __ schema evolution
 
 1. backward
@@ -96,8 +90,7 @@ Explanation
 
 SpecificRecord is created from generated record classes
 
-## Question 11 (3-7)
-Question 7: Incorrect
+## Question 11 (3-7)  SOS (-)
 In Avro, removing or adding a field that has a default is a __ schema evolution
 
 1. full
@@ -120,7 +113,7 @@ Since Confluent 5.4.0, Avro 1.9.1 is used. Since default value was added to enum
 
 if the writer's symbol is not present in the reader's enum and the reader has a default value, then that value is used, otherwise an error is signalled.
 
-## Question 13 (3-42: Incorrect
+## Question 13 (3):
 Which of the following is not an Avro primitive type?
 
 1. int
@@ -137,7 +130,7 @@ date is a logical type
 
 # Schema  Answers
 
-## Question 1 (1-1):
+## Answer 1 (1-1):
 
 A consumer application is using KafkaAvroDeserializer to deserialize Avro messages. What happens if message schema is not present in AvroDeserializer local cache?
 
@@ -148,7 +141,7 @@ Explanation
 First local cache is checked for the message schema. In case of cache miss, schema is pulled from the schema registry. An exception will be thrown in the Schema Registry does not have the schema (which should never happen if you set it up properly)
 
 
-## Question 2 (1-6)
+## Answer 2 (1-6) 
 I am producing Avro data on my Kafka cluster that is integrated with the Confluent Schema Registry. After a schema change that is incompatible, I know my data will be rejected. Which component will reject the data?
 
 - (4.) Confluent Schema Registry
@@ -157,7 +150,7 @@ Explanation
 
 The Confluent Schema Registry is your safeguard against incompatible schema changes and will be the component that ensures no breaking schema evolution will be possible. Kafka Brokers do not look at your payload and your payload schema, and therefore will not reject data
 
-## Question 3 (1-11)
+## Answer 3 (1-11)
 What client protocol is supported for the schema registry? (select two)
 
 - (3.) HTTP
@@ -168,7 +161,7 @@ Explanation
 clients can interact with the schema registry using the HTTP or HTTPS interface
 
 
-## Question 4 (1- 21)
+## Answer 4 (1- 21)
 Which is an optional field in an Avro record?
 
 - (2.) doc
@@ -177,7 +170,7 @@ Explanation
 
 doc represents optional description of message
 
-## Question 5 (1- 31)
+## Answer 5 (1- 31)
 What isn't a feature of the Confluent schema registry?
 
 
@@ -187,7 +180,7 @@ What isn't a feature of the Confluent schema registry?
 Explanation
 Data is stored on brokers.
 
-## Question 6 (1- 33)
+## Answer 6 (1- 33)
 Using the Confluent Schema Registry, where are Avro schema stored?
 
 - (3.) in the _schemas topic
@@ -196,7 +189,7 @@ Explanation
 
 The Schema Registry stores all the schemas in the _schemas Kafka topic
 
-## Question 7 (1- 34)
+## Answer 7 (1- 34) 
 In Avro, adding a field to a record without default is a __ schema evolution
 
 - (2). forward
@@ -205,7 +198,7 @@ Explanation
 
 Clients with old schema will be able to read records saved with new schema.
 
-## Question 8 (2-8)
+## Answer 8 (2-8)
 When using the Confluent Kafka Distribution, where does the schema registry service reside?
 
 - (3.) As a separate JVM Component
@@ -215,7 +208,7 @@ Explanation
 
 Schema registry is a separate application that provides RESTful interface for storing and retrieving Avro schemas.
 
-## Question 9 (2-31)
+## Answer 9 (2-31)
 In Avro, removing a field that does not have a default is a __ schema evolution
 
 - (1.) backward
@@ -225,7 +218,7 @@ Explanation
 Clients with new schema will be able to read records saved with old schema.
 
 
-## Question 10 (2-39)
+## Answer 10 (2-39)
 In Java, Avro SpecificRecords classes are
 
 - (1) automatically generated from an Acro Scchema + a Maven/Gradle Plugin
@@ -234,8 +227,7 @@ Explanation
 
 SpecificRecord is created from generated record classes
 
-## Question 11 (3-7)
-Question 7: Incorrect
+## Answer 11 (3-7)
 In Avro, removing or adding a field that has a default is a __ schema evolution
 
 - (1.) full
@@ -245,7 +237,7 @@ Explanation
 Clients with new schema will be able to read records saved with old schema and clients with old schema will be able to read records saved with new schema.
 
 
-## Question 12 (3-23)
+## Answer 12 (3-23)
 In Avro, adding an element to an enum without a default is a __ schema evolution
 
 - (4.) breaking
@@ -259,7 +251,7 @@ Since Confluent 5.4.0, Avro 1.9.1 is used. Since default value was added to enum
 if the writer's symbol is not present in the reader's enum and the reader has a default value, then that value is used, otherwise an error is signalled.
 
 
-## Question 13 (3-42: Incorrect
+## Answer 13 (3-42) 
 Which of the following is not an Avro primitive type?
 
 - (4.) date
@@ -268,8 +260,3 @@ Explanation
 
 date is a logical type
 
-# Failed
-
-## Test 1
-- 2
-- 9

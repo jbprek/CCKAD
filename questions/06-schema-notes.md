@@ -64,7 +64,7 @@ example:
 
 
 ## Avro Union
-Way to define fields with muliplle types
+Way to define fields with muliple types
 
 Most common use to have optional values in a field
 
@@ -77,6 +77,10 @@ example:
   "default": null
 }
  ````
+
+## TODO Logical types
+
+## TODO the complex case of Decimals, Floats, Doubles
 
 ## Schema Evolution
 ### Evolution types

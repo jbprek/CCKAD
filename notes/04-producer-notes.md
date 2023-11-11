@@ -4,7 +4,7 @@
 
 ## Reference
 - JavaDoc
-  - [KafkaConsumer ](https://kafka.apache.org/35/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html)
+  - [KafkaProducer ](https://kafka.apache.org/35/javadoc/org/apache/kafka/clients/producer/KafkaProducer.html)
 ## Kafka Producer timing/state
 
 ![State](producer-images/producer-state.png)
@@ -27,7 +27,7 @@ With a replication.factor=N and min.insync.replicas=M we can tolerate N-M broker
 ## Configuration
 
 ## Parameters
-
+ 
 - max.block.ms : This parameter controls how long the producer may block when calling send() and when explicitly requesting metadata via partitionsFor() Default 1 minute
 - delivery.timeout.ms : If the producer exceeds delivery.timeout.ms while retrying, the callback will be called with the exception that corresponds to the error that the broker returned before retrying. If delivery.timeout.ms is exceeded while the record batch was still waiting to be sent, the callback will be called with a timeout exception. delivery.timeout.ms > linger.ms + retry.backoff.ms + request.rimeout.ms, default value 2 min.
 - linger.ms

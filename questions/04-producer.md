@@ -33,7 +33,7 @@ Which of the following errors are retryable from a producer perspective? (select
 4. TOPIC_AUTHORIZATION_FAILED
 5. MESSAGE_TOO_LARGE
 
-## Question 5: (-)
+## Question 5: (--)
 Your producer is producing at a very high rate and the batches are completely full each time. How can you improve the producer throughput? (select two)
 1. Increase linger.ms
 2. Decrease batch.size
@@ -66,7 +66,7 @@ What is the risk of increasing max.in.flight.requests.per.connection while also 
 3. Message order is not preserved
 4.  Less resilient
 
-## Question 9: (-)
+## Question 9: 
 A Kafka producer application wants to send log messages to a topic that does not include any key. What are the properties that are mandatory to configure for the producer configuration? (select three)
 
 1. value.serializer
@@ -193,7 +193,7 @@ If I supply the setting compression.type=snappy to my producer, what will happen
 4. The Consumers have to compress the data
 5. The Kafka brokers have to decompress the data
 
-## Question 22: (-)
+## Question 22: (SOS -)
 What exceptions may be caught by the following producer? (select two)
 ````
 ProducerRecord<String, String> record = new ProducerRecord<>("topic1", "key1", "value1");
@@ -253,8 +253,9 @@ A topic has three replicas and you set min.insync.replicas to 2. If two out of t
 - (2) Produce rqquest is honored with single in sync replica
 - (3) Produce request will block till one of the two unavailable partition is available again
 
-## Question 28 (1): (-) ?
-To enhance compression, I can increase the chances of batching by using
+## Question 28 (1): (-+) ?
+To enhance compression, I can increase the chances of batching by using:
+(choose 1) 
 
 - (1) batch.size=65536
 - (2) max.message.size=10MB
@@ -293,14 +294,14 @@ partitions? (choose two)
 - (3) Redesign the message key
 - (4) Distribute the topic partitions across additional brokers
 
-## Question 31 (E):
+## Question 31 (E): 
 You need to guarantee messages are produced to Kafka at most once. What would you do to
 implement this? (choose two)
 - (1) Set acks=ALL
 - (2) Set acks=0
 - (3) Set acks=1
 
-## Question 32 (E): (-)
+## Question 32 (E): (SOS)
 Your priority for producing messages to the Kafka cluster is maximum throughput over low
 latency. What would you do to accomplish this? (choose one)
 - (1) Set batch.size low value and linger.ms to 0
