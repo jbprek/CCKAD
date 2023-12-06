@@ -63,7 +63,7 @@ In Avro, adding a field to a record without default is a __ schema evolution
 When using the Confluent Kafka Distribution, where does the schema registry service reside?
 
 1. As an in memory plugin on your Zookeeper cluster
-2. As an in meory plugin on your Kafka Connect Workers
+2. As an in memory plugin on your Kafka Connect Workers
 3. As a separate JVM Component
 4. As an in memory plugin on your Kafka Brokers
 
