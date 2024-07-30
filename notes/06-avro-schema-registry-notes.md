@@ -2,7 +2,13 @@
 ## References
 
 - [Apache Avro Official Documentation](https://avro.apache.org/docs/)
+- [Oracle getting started](https://docs.oracle.com/cd/E57769_01/html/GettingStartedGuide/avroschemas.html)
 - [Confluent Schema Evolution](https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html)
+
+## Example Schemas
+- [Example schemas by Rabo Bank](https://github.com/Axual/rabo-alerts-blog-post/tree/master/src/main/avro)
+- [Example schemas  by Gwen Shapiro](https://github.com/gwenshap/kafka-examples)
+
 ## Primitive types 
 - null
 - int
@@ -69,9 +75,9 @@ example:
  ````
 
 ## Avro Union
-Way to define fields with muliple types
 
-Most common use to have optional values in a field
+- Way to define fields with muliple types
+- Most common use to have optional values in a field
 
 example:
 
@@ -83,9 +89,45 @@ example:
 }
  ````
 
-## TODO Logical types
+##  Logical types
 
-## TODO the complex case of Decimals, Floats, Doubles
+- Avro has logical types to represent primitive data in a more meaningful way
+- The most common logical types are:
+    - decimal: (bytes) arbitrary precision and scale
+    - date: (int) days since Unix epoch
+    - uuid: (string) UUID
+    - time-millis: (int) milliseconds since midnight
+    - time-micros: (long) microseconds since midnight
+    - timestamp-millis: (long)milliseconds since Unix epoch
+    - timestamp-micros: (long)microseconds since Unix epoch
+    - local-timestamp-millis: (long)milliseconds since Unix epoch
+    - local-timestamp-micros: (long)microseconds since Unix epoch
+    - duration: (fixed)number of milliseconds
+  
+      example:
+
+ ````json
+ {
+  "name" : "middle_name",
+  "type": "long",
+  "logicalType": "timestamp-millis"
+}
+ ````
+
+### Notes:
+- Relatively new feature
+- Not to be used with unions
+
+## the complex case of Decimals, Floats, Doubles
+
+The logical type decimal uses a byte array to represent the decimal value. The problem with this is that the byte array is not human readable. 
+
+To solve this, we can use String to represent the decimal value.
+
+Also beware of support of the specific in languages other than Java.
+    
+
+
 
 ## Schema Evolution
 ### Evolution types
