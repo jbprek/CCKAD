@@ -19,28 +19,53 @@
 - string
 - boolean
 
-## Avro Record
-- name
-- namespace
-- doc
-- aliases
-- fields
-  - name
-  - doc
-  - type (can be primitive)
-  - default 
+
 
 ## Avro Complex Types
+Avro supports six kinds of complex types: 
+- records
+- enums
+- arrays
+- maps
+- unions 
+- fixed 
 
-You can have complex types such as:
-- Enums
-- Arrays
-- Maps
-- Unions
-- Using other schemas as type
-## Avro Enums
+### Avro Record
 
-example:
+May have the following attributes:
+- name :  (required)
+- namespace : (optional)
+- doc : (optional)
+- aliases : (optional) JSON array of strings, providing alternate names for this record
+- fields : (required)
+  - name : (required)
+  - doc : (optional)
+  - type  : (required) a schema, which may be a primitive/logical type or a complex schema
+  - default
+
+
+ ````json
+ {
+  "type": "record",
+  "name": "LongList",
+  "aliases": ["LinkedLongs"],    
+  "fields" : [
+    {"name": "value", "type": "long"},
+    {"name": "next", "type": ["null", "LongList"]} 
+  ]
+}
+
+ ````
+### Avro Enums
+Supports the  following attributes:
+- name :  (required)
+- namespace : (optional)
+- doc : (optional)
+- aliases : (optional) JSON array of strings, providing alternate names for this record
+- symbols : (required) JSON array of strings, providing the symbols for this enum 
+- default: (optional) default value for this enum
+
+Example:
  ````json
  {
   "type": "enum",
@@ -53,33 +78,45 @@ example:
 }
  ````
 
-## Avro Arrays
-example:
+###  Avro Arrays
+Supports a single attribute 'items' which specifies the type of the array elements.
+
+Example:
  ````json
- {
+{
   "type": "array",
-  "items": "string"
+  "items" : "string",
+  "default": []
 }
+
  ````
 
-## Avro Maps
+### Avro Maps
 
-Attribute 'values' specifies the type of the value, the key can only be of string type.
+- Supports a single attribute 'values' with the schema of the map values
+- Map keys are assumed to be strings.
 
-example:
+Example:
  ````json
- {
+{
   "type": "map",
-  "values": "string"
+  "values" : "long",
+  "default": {}
 }
  ````
 
-## Avro Union
+### Avro Union
 
+- Are represented using JSON arrays
 - Way to define fields with muliple types
 - Most common use to have optional values in a field
+- Supports the  following attributes:
+  - name :  (required)
+  - namespace : (optional)
+  - aliases : (optional) JSON array of strings, providing alternate names for this record
+  - default: (optional) default value for this union, must match one of the first type
 
-example:
+Example:
 
  ````json
  {
@@ -87,6 +124,23 @@ example:
   "type": ["null", "string"],
   "default": null
 }
+ ````
+
+### Fixed
+Fixed uses the type name “fixed” and supports the following attributes:
+
+- name: a string naming this fixed (required).
+- namespace, a string that qualifies the name (optional);
+- aliases: a JSON array of strings, providing alternate names for this enum (optional).
+- size: an integer, specifying the number of bytes per value (required).
+
+Example:
+
+16-byte quantity may be declared with:
+
+ ````json
+ {"type": "fixed", "size": 16, "name": "md5"}
+
  ````
 
 ##  Logical types
@@ -104,7 +158,7 @@ example:
     - local-timestamp-micros: (long)microseconds since Unix epoch
     - duration: (fixed)number of milliseconds
   
-      example:
+Example:
 
  ````json
  {
@@ -118,7 +172,7 @@ example:
 - Relatively new feature
 - Not to be used with unions
 
-## the complex case of Decimals, Floats, Doubles
+## Use of Decimals, Floats, Doubles
 
 The logical type decimal uses a byte array to represent the decimal value. The problem with this is that the byte array is not human readable. 
 
@@ -132,31 +186,30 @@ Also beware of support of the specific in languages other than Java.
 ## Schema Evolution
 ### Evolution types
 1. **Backward** : a backward compatible change. **new schema can read old data**.
-2. **Forward** :  a forward compatible change. **old schema can read new data**.
+2. **Forward** :  a forward compatible change. **old schema can read new data**. 
 3. **Full** : when is backward and forward at the same time
 4. **Breaking** : when none of those
 
 ### Backward evolution
 - Delete Fields - New schema ignores unknown fields from old data
 - Add optional fields  - New fields are relevant to the new schema
-### Forward
+### Forward evolution
 - Delete optional fields - Old schema 
-- Add fields
-### Full
-- Delete optional fields
-- Add optional fields
+- Add fields - Avro will ignore unknown fields
+### Full evolution
+- Delete optional fields (with defaults)
+- Add optional fields (with defaults)
 
 ### Breaking changes
 - Adding removing elements from Enum
 - Changing the type of the field (i.e. string to int)
 - Renaming a field
 
-
 ### REMEMBER
 - AVRO can deserialize a record when a field is missing without error
-- Backward delete optional, add 
-- Forward  delete, add optional
-- Full delete optional, add optional
+- Backward - New Schema reads old data - delete optional, add 
+- Forward  - Old Schema reads new data- delete, add optional
+- Full - Both Back and For - delete optional, add optional
 
 ### Rules to avoid breaking changes
 1. Make your primary key required
