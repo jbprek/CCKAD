@@ -75,20 +75,12 @@ In Avro, removing a field that does not have a default is a __ schema evolution
 3. forward
 4. full
 
-Explanation
-
-Clients with new schema will be able to read records saved with old schema.
-
 ## Question 10 (2-39)
 In Java, Avro SpecificRecords classes are
 
 1. automatically generated from an Avro Schema + a Maven/Gradle Plugin
 2. automatically generated from an Avro Schema
 3. written manually by the programmer
-
-Explanation
-
-SpecificRecord is created from generated record classes
 
 ## Question 11 (3-7)  SOS (-)
 In Avro, removing or adding a field that has a default is a __ schema evolution
@@ -105,14 +97,6 @@ In Avro, adding an element to an enum without a default is a __ schema evolution
 3. forward
 4. breaking
 
-Explanation
-
-Since Confluent 5.4.0, Avro 1.9.1 is used. Since default value was added to enum complex type , the schema resolution changed from:
-
-(<1.9.1) if both are enums:** if the writer's symbol is not present in the reader's enum, then an error is signalled. **(>=1.9.1) if both are enums:
-
-if the writer's symbol is not present in the reader's enum and the reader has a default value, then that value is used, otherwise an error is signalled.
-
 ## Question 13 (3):
 Which of the following is not an Avro primitive type?
 
@@ -121,11 +105,6 @@ Which of the following is not an Avro primitive type?
 3. string
 4. date
 5. null
-
-
-Explanation
-date is a logical type
-
 
 
 # Schema  Answers
