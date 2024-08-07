@@ -247,3 +247,26 @@ Understanding schemas
 A schema defines the structure of message data. It defines allowed data types, their format, and relationships. A schema acts as a blueprint for data, describing the structure of data records, the data types of individual fields, the relationships between fields, and any constraints or rules that apply to the data.
 
 Schemas are used in various data processing systems, including databases, message brokers, and distributed event and data processing frameworks. They help ensure that data is consistent, accurate, and can be efficiently processed and analyzed by different systems and applications. Schemas facilitate data sharing and interoperability between different systems and organizations.
+
+# CLI kafka avro
+
+## Example producer 
+
+-  Produce a record with one field define schema
+```
+kafka-avro-console-producer \
+    --broker-list 127.0.0.1:9092 --topic test-avro \
+    --property schema.registry.url=http://127.0.0.1:8081 \
+    --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+```
+Example Data
+```
+{"f1": "value1"}
+{"f1": "value2"}
+{"f1": "value3"}
+```
+
+
+
+## Example consumer
+
